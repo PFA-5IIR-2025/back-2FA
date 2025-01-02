@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  2fa-api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: 2fa-api
+    ports:
+      - "8180:8000"  
+    restart: unless-stopped        
