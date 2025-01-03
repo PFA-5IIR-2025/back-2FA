@@ -4,9 +4,17 @@ from pydantic import BaseModel
 import pyotp
 import qrcode
 import io
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow requests from this origin
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 class VerifyRequest(BaseModel):
     secret: str
     code: str
